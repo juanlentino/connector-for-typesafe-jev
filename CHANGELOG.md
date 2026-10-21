@@ -6,6 +6,12 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Documentation
+
+- `docs/RELEASING.md`: dropped the stale note about the logo on the
+  Connectors card (removed in 0.4.2), and documented deploying to the
+  directory's SVN from the release workflow after approval.
+
 ## [0.4.2] - 2026-10-21
 
 ### Removed

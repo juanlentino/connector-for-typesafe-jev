@@ -91,5 +91,13 @@ svn ci -m "Release X.Y.Z"
 Directory images (icon, banner, screenshots) go in the SVN `assets/`
 directory, not the zip. Sizes are in `.wordpress-org/README.md`. Do not put
 the TypeSafe mark on those; the directory treats third-party branding on
-listing assets as an implied endorsement. The mark inside the plugin, on the
-Connectors card, identifies the service and is a different matter.
+listing assets as an implied endorsement. The plugin itself ships no TypeSafe
+logo either since 0.4.2 (Guideline 1: shipped images must be GPL-compatible).
+
+**Without touching SVN:** once approved, the usual route is
+[10up/action-wordpress-plugin-deploy](https://github.com/10up/action-wordpress-plugin-deploy)
+in `release.yml`, run on the same tag push, with `SVN_USERNAME` and
+`SVN_PASSWORD` as repo secrets. It honours `.distignore` and copies
+`.wordpress-org/` to SVN `assets/`. Add it after approval, not before: there
+is no SVN repo to deploy to until then. The repo is public, so the job costs
+no Actions minutes.
