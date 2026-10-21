@@ -19,11 +19,11 @@ defined( 'ABSPATH' ) || exit;
  *     $answer = JevConnector\ask(
  *         array( 'comment' => $comment_text ),
  *         array(
- *             'spam' => JevConnector\Question::noul( 'Is this comment spam?' ),
+ *             'hostile' => JevConnector\Question::noul( 'Does this comment attack a person rather than an idea?' ),
  *         )
  *     );
  *
- *     if ( ! is_wp_error( $answer ) && $answer->noul( 'spam' ) > 0.9 ) {
+ *     if ( ! is_wp_error( $answer ) && $answer->noul( 'hostile' ) >= 0.9 ) {
  *         // Act.
  *     }
  *

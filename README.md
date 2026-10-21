@@ -19,11 +19,11 @@ use JevConnector\Question;
 
 $answer = JevConnector\ask(
     array( 'comment' => $comment->comment_content ),
-    array( 'spam' => Question::noul( 'Is this comment spam?' ) )
+    array( 'hostile' => Question::noul( 'Does this comment attack a person rather than an idea?' ) )
 );
 
-if ( ! is_wp_error( $answer ) && $answer->noul( 'spam' ) >= 0.9 ) {
-    wp_spam_comment( $comment );
+if ( ! is_wp_error( $answer ) && $answer->noul( 'hostile' ) >= 0.9 ) {
+    wp_set_comment_status( $comment, 'hold' );
 }
 ```
 
@@ -44,9 +44,28 @@ Jev answers three kinds of question, and many of them in a single call:
 
 | Primitive | Question | Answer |
 | --- | --- | --- |
-| `noul` | "Is this comment spam?" | `0.94` |
+| `noul` | "Does this comment attack a person?" | `0.94` |
 | `choice` | "Which category fits?" | `"essays"` plus a distribution and confidence |
 | `score` | "How severe is this?" | `1.3` on a scale you defined, plus confidence |
+
+## Common uses
+
+Jev answers questions about meaning, so it fits wherever a site needs a judgement a rule cannot make. Spam is not one of them: leave that to [Akismet](https://wordpress.org/plugins/akismet/), which sees signals from millions of sites. Jev answers what a spam filter does not ask.
+
+| Use | Ask Jev | Shape | Then |
+| --- | --- | --- | --- |
+| Comment moderation | "Does this comment attack a person rather than an idea?" | `noul` | Hold it for a human |
+| Contact form routing | "Which team should answer this: billing, technical, sales, other?" | `choice` | Send it to that inbox |
+| Tags and categories | "Is this post about *{term}*?", one question per existing term, one call | `noul` | Suggest the terms; an editor accepts |
+| Pre-publish checks | "How well is the central claim supported?" | `score` | Show it in the publish checklist |
+| Policy and compliance | "Does this post make a health claim?" / "promise a financial return?" | `noul` | Require review before publishing |
+| Checking AI-written drafts | "Does the summary state anything the source does not?" | `noul` | Flag the draft before it goes out |
+| Product listings | "Is this a prohibited item under our policy?" plus "Which category fits?" | `noul` + `choice` | Queue it for review, prefill the category |
+| Reviews and feedback | "What is the tone?" and "Does this report a defect?" | `choice` + `noul` | Route defects to support |
+| Related posts and search | "How relevant is this post to the one being read?", per candidate | `score` | Reorder the list |
+| Lead qualification | "How well does this enquiry fit the customer we serve?" | `score` | Answer the best fits first |
+
+Anything that publishes, deletes or emails should gate on a high threshold or a human; see [Confidence gating](#confidence-gating). TypeSafe keeps a longer [use-case map](https://docs.typesafe.ai/concepts/use-case-map).
 
 ## Install
 

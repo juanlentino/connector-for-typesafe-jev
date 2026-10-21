@@ -6,6 +6,29 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.5] - 2026-10-21
+
+Documentation only. No code change. Ships because `readme.txt` and the
+`ask()` docblock do.
+
+### Changed
+
+- The "In five lines" example holds a hostile comment for review
+  (`wp_set_comment_status( $comment, 'hold' )`) instead of marking spam.
+  Leading with spam set Jev against Akismet, which sees signals from millions
+  of sites and is better at it; the example now shows a judgement a spam
+  filter does not make. The readme.txt example, the `ask()` docblock and the
+  pinning test follow.
+
+### Added
+
+- "Common uses" in README and readme.txt: ten everyday WordPress jobs
+  (comment moderation, form routing, tagging, pre-publish checks, policy
+  checks, checking AI drafts, product listings, review triage, related-post
+  ranking, lead qualification), each with the question to ask, its shape and
+  what to do with the answer, drawn from TypeSafe's use-case map.
+
+
 ## [0.4.4] - 2026-10-21
 
 Checked against the WordPress security handbook (validating, sanitizing,
