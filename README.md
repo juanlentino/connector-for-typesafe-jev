@@ -77,9 +77,22 @@ Nothing is sent to TypeSafe until a key resolves, and then only when your own co
 Like the Anthropic and Google provider connectors, this plugin adds no menu. The card is the whole UI. The default model and the REST capability are code-level choices:
 
 ```php
-add_filter( 'jevc_default_model', fn() => 'jev-1.13' );
+add_filter( 'jevc_default_model', fn() => 'jev-1.13.0' );
 add_filter( 'jevc_rest_capability', fn() => 'manage_options' );
 ```
+
+### Models
+
+The default model is `jev-latest`, TypeSafe's alias for its newest stable release. When TypeSafe ships a new Jev, the alias moves and every site follows it with no plugin release, the same way the core Anthropic, Google and OpenAI connectors list models live instead of hardcoding them. `$answer->model()` names the versioned id that actually answered.
+
+An alias moving can shift answers. If you tuned confidence thresholds against one version, pin it with the filter above and move when you are ready. `jev-preview` is the newest release, stable or not; it is never the default.
+
+```php
+$models = JevConnector\models();        // name, description, release_date
+$fresh  = JevConnector\models( true );  // skip the one-day cache
+```
+
+The list is informational. TypeSafe accepts versioned ids such as `jev-1.14.0` whether or not they are listed, so nothing is validated against it.
 
 What a site does with an answer (moderate a comment, tag a post, grade a draft) belongs to the plugin or theme that owns that content. [Signal & Noise Tools](https://github.com/juanlentino/signal-and-noise-tools) is the first consumer built that way.
 
@@ -201,7 +214,7 @@ await apiFetch( {
 } );
 ```
 
-`GET /wp-json/jev/v1/status` reports whether the connector is ready.
+`GET /wp-json/jev/v1/models` lists the models and aliases the account can send (`?refresh=1` skips the cache). `GET /wp-json/jev/v1/status` reports whether the connector is ready.
 
 ## Hooks
 

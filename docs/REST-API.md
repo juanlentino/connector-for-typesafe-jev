@@ -57,6 +57,12 @@ Response is the decoded TypeSafe body, untouched:
 Identical requests are answered from the cache for an hour; the body is the
 same either way.
 
+## `GET /wp-json/jev/v1/models`
+
+Same capability. Returns `{ "models": [ { "name", "description", "release_date" } ] }`
+from TypeSafe's `GET /v1/models`, cached for a day per API key. `refresh=true`
+skips the cache. Errors use the codes below; a failure is never cached.
+
 ## `GET /wp-json/jev/v1/status`
 
 Same capability. Returns `{ "ready": bool, "model": string, "version": string }`.

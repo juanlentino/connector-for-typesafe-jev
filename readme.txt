@@ -4,7 +4,7 @@ Tags: ai, classification, api, connector, automation
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.3.1
+Stable tag: 0.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,9 +80,9 @@ This plugin connects to the TypeSafe System One API, a third-party service opera
 
 **What is sent:** the state you supply to `JevConnector\ask()` or to the REST route (which may include post content, comment text, or any other data your code passes), the questions you define, and your model identifier. Your API key is sent as a bearer token, and the request's User-Agent header identifies this plugin, its version, and your site's home URL.
 
-**When it is sent:** only when your own code calls `JevConnector\ask()` or a permitted user calls the REST route. This plugin itself never initiates a request. Nothing is sent until an administrator has connected TypeSafe under **Settings → Connectors**, and no request is made on activation, on page load, or on any schedule. Identical repeat requests are served from a local cache rather than re-sent.
+**When it is sent:** only when your own code calls `JevConnector\ask()` or `JevConnector\models()`, or a permitted user calls one of the REST routes. `models()` asks only for the list of model names your account can use, sends no content, and is cached for a day. This plugin itself never initiates a request. Nothing is sent until an administrator has connected TypeSafe under **Settings → Connectors**, and no request is made on activation, on page load, or on any schedule. Identical repeat requests are served from a local cache rather than re-sent.
 
-**Where it goes:** `https://api.typesafe.ai/v1/systemone`
+**Where it goes:** `https://api.typesafe.ai/v1/systemone` for questions and `https://api.typesafe.ai/v1/models` for the model list.
 
 Service terms and policies: https://docs.typesafe.ai/legal
 Documentation: https://docs.typesafe.ai
@@ -112,6 +112,10 @@ Because key management is handled entirely by the Connectors API introduced in 7
 
 Not yet. Jev is not an LLM: it returns a probability, a choice, or a score with a confidence figure, and the core AI Client has no capability for that kind of model yet. WordPress checks every AI provider key against a matching provider in the AI Client when it is saved and clears it if there is none, so the plugin registers under its own connector type until the AI Client supports decision models. WordPress stores and masks the key either way.
 
+= Which Jev model does it use? =
+
+`jev-latest`, TypeSafe's alias for its newest stable release, so new Jev releases arrive without a plugin update. To stay on one version, return a versioned id such as `jev-1.13.0` from the `jevc_default_model` filter. `JevConnector\models()` lists the names your account can send.
+
 = Does anything get sent without my say-so? =
 
 No. Until a key is present, every call returns a `jevc_not_configured` error and no HTTP request is made.
@@ -134,6 +138,10 @@ Filters: `jevc_default_model`, `jevc_http_timeout`, `jevc_request_payload`, `jev
 2. One call returning a probability, a named choice and a score, each with its confidence figure.
 
 == Changelog ==
+
+= 0.4.0 =
+* New: `JevConnector\models()` and `GET /wp-json/jev/v1/models` list the Jev models and aliases your account can send, cached for a day, the way the core AI provider connectors list theirs.
+* The External services section now covers the model list request.
 
 = 0.3.1 =
 * Documentation only, no behaviour change. Corrected the FAQ on why the plugin is not an AI provider yet: WordPress clears an AI provider key on save when no matching AI Client provider exists, and there is none for decision models until the AI Client supports them.
