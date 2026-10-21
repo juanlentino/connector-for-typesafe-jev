@@ -40,8 +40,9 @@ final class ConnectorTest extends TestCase {
 		// Where the card's "get your API key" link goes. /settings/keys was wrong.
 		$this->assertSame( 'https://console.typesafe.ai/keys', $args['authentication']['credentials_url'] );
 		$this->assertArrayHasKey( 'file', $args['plugin'] );
-		$this->assertStringEndsWith( '/assets/images/typesafe.png', $args['logo_url'] );
-		$this->assertFileExists( dirname( __DIR__ ) . '/assets/images/typesafe.png' );
+		// No TypeSafe logo: Guideline 1 requires GPL-compatible images, and
+		// TypeSafe's customer agreement (16.4) grants no right to its logo.
+		$this->assertArrayNotHasKey( 'logo_url', $args );
 	}
 
 	/**

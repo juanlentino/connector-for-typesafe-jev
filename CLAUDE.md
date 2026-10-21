@@ -58,6 +58,13 @@ and features that decide what to do with an answer belong in the consumer.
 The 0.2.x modules are in git history under tag `v0.2.5` if a separate plugin
 ever wants them.
 
+**No TypeSafe logo in the plugin.** 0.2.2 to 0.4.1 shipped TypeSafe's favicon
+as the card's `logo_url`; 0.4.2 removed it. Guideline 1 requires every image
+in a directory plugin to be GPL-compatible, and TypeSafe's Master Customer
+Agreement (16.4) grants no right to its name, brand or logo. Bring it back
+only with written permission from TypeSafe that also covers GPL distribution,
+or load nothing and keep core's placeholder. The test asserts no `logo_url`.
+
 **`Requires at least: 7.0`, with no fallback credential path.** Key management is
 entirely the core Connectors API. A second, weaker key field for older versions
 would mean two paths to keep in sync forever.

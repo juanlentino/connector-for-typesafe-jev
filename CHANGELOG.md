@@ -6,6 +6,24 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-10-21
+
+### Removed
+
+- The TypeSafe logo (`assets/images/typesafe.png`) and the connector's
+  `logo_url`. The Connectors card shows core's generic placeholder. Checked
+  against the directory guidelines before submission: Guideline 1 requires
+  every image a plugin ships to be GPL-compatible, which a third party's mark
+  is not, and TypeSafe's Master Customer Agreement (16.4) grants no right to
+  its logo. The unofficial plugins that do show a vendor logo were not a
+  reason to keep it. `readme.txt` and README say the plugin ships no logo.
+
+### Added
+
+- `readme.txt` `== Upgrade Notice ==` section, the one section of the
+  official readme template that was missing.
+
+
 ## [0.4.1] - 2026-10-21
 
 Directory readiness. No behaviour change.

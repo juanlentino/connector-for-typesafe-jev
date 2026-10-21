@@ -4,7 +4,7 @@ Tags: ai, classification, api, connector, automation
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,7 +51,7 @@ At its core this is a connector, not a feature. The plumbing comes first:
 
 This plugin adds no menu and no screens of its own. Like the provider connectors for Anthropic and Google, it is the card under **Settings → Connectors** plus a PHP and REST surface for other code to build on. What a site does with Jev's answers belongs to the theme or plugin that owns the content.
 
-TypeSafe and Jev are trademarks of their owner. This plugin is an independent client and is not affiliated with, endorsed by, or sponsored by TypeSafe. The TypeSafe mark appears only on the Connectors card, to identify the service the way every connector card does.
+TypeSafe and Jev are trademarks of their owner. This plugin is an independent client and is not affiliated with, endorsed by, or sponsored by TypeSafe, and it ships no TypeSafe logo.
 
 = Example =
 
@@ -141,6 +141,9 @@ Filters: `jevc_default_model`, `jevc_http_timeout`, `jevc_request_payload`, `jev
 
 == Changelog ==
 
+= 0.4.2 =
+* The TypeSafe logo is removed from the Connectors card. The card shows WordPress's generic placeholder, because every image a directory plugin ships must be GPL-compatible.
+
 = 0.4.1 =
 * The description now states that the plugin is independent and not affiliated with TypeSafe.
 * The plugin's home moved to github.com/juanlentino/connector-for-typesafe-jev, named after the plugin.
@@ -179,3 +182,11 @@ Filters: `jevc_default_model`, `jevc_http_timeout`, `jevc_request_payload`, `jev
 
 = 0.1.0 =
 * First release: Connectors API registration, client, question builders, response reader, response cache, and REST proxy.
+
+== Upgrade Notice ==
+
+= 0.4.2 =
+The Connectors card no longer shows the TypeSafe logo. Nothing else changes; your key stays connected.
+
+= 0.4.0 =
+Adds a model list (`JevConnector\models()`). The default model is still `jev-latest`.
