@@ -8,6 +8,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Documentation
 
+- `readme.txt` FAQ points contributors to the GitHub repo; CONTRIBUTING has a
+  "Where to start" section; the new-issue page links Discussions (now on).
 - `screenshot-1` and the README's Connectors card image retaken on 0.4.3:
   the card shows the plugin's own icon, no TypeSafe mark.
 

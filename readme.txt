@@ -118,6 +118,10 @@ Not yet. Jev is not an LLM: it returns a probability, a choice, or a score with 
 
 `jev-latest`, TypeSafe's alias for its newest stable release, so new Jev releases arrive without a plugin update. To stay on one version, return a versioned id such as `jev-1.13.0` from the `jevc_default_model` filter. `JevConnector\models()` lists the names your account can send.
 
+= How can I contribute? =
+
+Development happens on GitHub: https://github.com/juanlentino/connector-for-typesafe-jev. Issues marked "good first issue" are a good start, and questions go to Discussions there.
+
 = Does anything get sent without my say-so? =
 
 No. Until a key is present, every call returns a `jevc_not_configured` error and no HTTP request is made.

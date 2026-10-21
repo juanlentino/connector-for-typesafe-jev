@@ -5,6 +5,13 @@ to get a change in is to read [CLAUDE.md](CLAUDE.md) first: it lists the design
 decisions that look like bugs if you do not know why they are there, and a pull
 request that reverses one of them will be closed with a pointer to that file.
 
+## Where to start
+
+Issues labelled [`good first issue`](https://github.com/juanlentino/connector-for-typesafe-jev/labels/good%20first%20issue)
+are scoped to one file and say what "done" means. [`blocked: upstream`](https://github.com/juanlentino/connector-for-typesafe-jev/labels/blocked%3A%20upstream)
+issues wait on TypeSafe or WordPress core; talking through the shape there is
+welcome. Questions and ideas go to [Discussions](https://github.com/juanlentino/connector-for-typesafe-jev/discussions).
+
 ## Setup
 
 Requires PHP 7.4+ and Composer. No WordPress install is needed for the tests.
