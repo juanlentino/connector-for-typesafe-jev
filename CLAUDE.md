@@ -85,8 +85,9 @@ would mean two paths to keep in sync forever.
 - `composer test` and `composer lint` must pass.
 - CI runs Plugin Check against a real WordPress install, on the staged file
   set in a folder named after the slug. **It must stay that way.** Pointing it
-  at the raw checkout makes it derive the slug from the repo folder name
-  (`jev-connector`) and report every `__()` call as a text-domain mismatch.
+  at the raw checkout makes it derive the slug from the checkout folder name
+  (a local clone may still be called `jev-connector`, the repo's name until
+  0.4.1) and report every `__()` call as a text-domain mismatch.
   Unescaped output, unsanitized input and missing nonces are the directory's
   top three rejection reasons.
 - `.distignore` defines what ships. Adding a dev file to the root means adding

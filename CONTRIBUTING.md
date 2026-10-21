@@ -10,8 +10,8 @@ request that reverses one of them will be closed with a pointer to that file.
 Requires PHP 7.4+ and Composer. No WordPress install is needed for the tests.
 
 ```bash
-git clone https://github.com/juanlentino/jev-connector.git
-cd jev-connector
+git clone https://github.com/juanlentino/connector-for-typesafe-jev.git
+cd connector-for-typesafe-jev
 composer install
 composer check      # lint + tests
 ```

@@ -1,7 +1,7 @@
 blank_issues_enabled: true
 contact_links:
   - name: Security issue
-    url: https://github.com/juanlentino/jev-connector/security/advisories/new
+    url: https://github.com/juanlentino/connector-for-typesafe-jev/security/advisories/new
     about: Report privately. Please do not open a public issue for a vulnerability.
   - name: TypeSafe API questions
     url: https://docs.typesafe.ai

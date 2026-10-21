@@ -4,7 +4,7 @@ Tags: ai, classification, api, connector, automation
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.0
+Stable tag: 0.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,8 @@ At its core this is a connector, not a feature. The plumbing comes first:
 * Filters and actions at every point worth intercepting.
 
 This plugin adds no menu and no screens of its own. Like the provider connectors for Anthropic and Google, it is the card under **Settings → Connectors** plus a PHP and REST surface for other code to build on. What a site does with Jev's answers belongs to the theme or plugin that owns the content.
+
+TypeSafe and Jev are trademarks of their owner. This plugin is an independent client and is not affiliated with, endorsed by, or sponsored by TypeSafe. The TypeSafe mark appears only on the Connectors card, to identify the service the way every connector card does.
 
 = Example =
 
@@ -138,6 +140,10 @@ Filters: `jevc_default_model`, `jevc_http_timeout`, `jevc_request_payload`, `jev
 2. One call returning a probability, a named choice and a score, each with its confidence figure.
 
 == Changelog ==
+
+= 0.4.1 =
+* The description now states that the plugin is independent and not affiliated with TypeSafe.
+* The plugin's home moved to github.com/juanlentino/connector-for-typesafe-jev, named after the plugin.
 
 = 0.4.0 =
 * New: `JevConnector\models()` and `GET /wp-json/jev/v1/models` list the Jev models and aliases your account can send, cached for a day, the way the core AI provider connectors list theirs.

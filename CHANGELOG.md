@@ -6,6 +6,24 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-10-21
+
+Directory readiness. No behaviour change.
+
+### Changed
+
+- `readme.txt` states that the plugin is independent and not affiliated with,
+  endorsed by, or sponsored by TypeSafe, and that the TypeSafe mark appears
+  only on the Connectors card. Most unofficial integrations in the directory
+  carry this line (Cloudflare Turnstile, Stripe, OpenAI clients); until now
+  only `README.md` said it, and the directory shows `readme.txt`.
+- The GitHub repo is renamed from `jev-connector` to
+  `connector-for-typesafe-jev`, the plugin's slug, so the public name no
+  longer starts with TypeSafe's mark (the spirit of Guideline 17). GitHub
+  redirects old URLs. `Plugin URI`, `composer.json`, badges, clone commands,
+  the security advisory link and the social preview are updated.
+
+
 ## [0.4.0] - 2026-10-21
 
 TypeSafe shipped Jev 1.14 (`jev-preview`) and `GET /v1/models` on
