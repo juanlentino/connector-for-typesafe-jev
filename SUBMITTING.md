@@ -67,8 +67,13 @@ Connector", on purpose. Guideline 17 prohibits a third-party trademark as the
 mark. "Feature for Brand" is the form reviewers accept. The resulting slug will
 be `connector-for-typesafe-jev`.
 
-The GitHub repo is named `jev-connector` for brevity. That does not affect the
-directory slug, which comes from the `Plugin Name:` header at submission time.
+The GitHub repo carries the same name as the slug, `connector-for-typesafe-jev`
+(it was `jev-connector` until 0.4.1, and GitHub redirects the old URLs). The
+directory slug itself comes from the `Plugin Name:` header at submission time.
+
+The directory listing says, as most unofficial integrations do, that the plugin
+is independent and not affiliated with, endorsed by, or sponsored by TypeSafe
+(`readme.txt`, end of the description). Keep that line.
 
 If TypeSafe would rather you not ship a public client under their name at all,
 that is worth a short email to them before you submit. It costs you one message

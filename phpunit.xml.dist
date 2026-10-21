@@ -9,7 +9,7 @@
 	failOnEmptyTestSuite="true"
 	failOnWarning="true">
 	<testsuites>
-		<testsuite name="jev-connector">
+		<testsuite name="connector-for-typesafe-jev">
 			<directory suffix=".php">tests</directory>
 			<exclude>tests/bootstrap.php</exclude>
 		</testsuite>

@@ -24,6 +24,6 @@
       <text x="666" y="408" fill="#e6edf3" font-weight="700">score<tspan fill="#7d8590" font-weight="400">  1.3 · 0.79</tspan></text>
     </g>
     <text x="88" y="512" fill="#6e7681" font-family="SF Mono, Menlo, monospace"
-          font-size="20">github.com/juanlentino/jev-connector</text>
+          font-size="20">github.com/juanlentino/connector-for-typesafe-jev</text>
   </g>
 </svg>

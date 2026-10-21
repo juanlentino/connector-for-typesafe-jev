@@ -1,12 +1,12 @@
 {
-	"name": "juanlentino/jev-connector",
+	"name": "juanlentino/connector-for-typesafe-jev",
 	"description": "WordPress connector for the TypeSafe System One API (Jev).",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
-	"homepage": "https://github.com/juanlentino/jev-connector",
+	"homepage": "https://github.com/juanlentino/connector-for-typesafe-jev",
 	"support": {
-		"issues": "https://github.com/juanlentino/jev-connector/issues",
-		"security": "https://github.com/juanlentino/jev-connector/security/advisories/new"
+		"issues": "https://github.com/juanlentino/connector-for-typesafe-jev/issues",
+		"security": "https://github.com/juanlentino/connector-for-typesafe-jev/security/advisories/new"
 	},
 	"require": {
 		"php": ">=7.4"

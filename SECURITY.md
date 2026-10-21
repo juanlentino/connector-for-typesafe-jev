@@ -3,7 +3,7 @@
 ## Reporting a vulnerability
 
 Use GitHub's private reporting form:
-https://github.com/juanlentino/jev-connector/security/advisories/new.
+https://github.com/juanlentino/connector-for-typesafe-jev/security/advisories/new.
 Please do not open a public issue. You will get an acknowledgement within
 three days and a fix or a reasoned decision within thirty. Credit is given in
 the changelog unless you would rather it was not.
