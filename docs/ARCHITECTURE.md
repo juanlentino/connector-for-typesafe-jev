@@ -18,6 +18,7 @@ includes/
   class-rest-controller.php      /jev/v1/ask, /models and /status
   class-exception.php            Thrown only for programmer error
   functions.php                  JevConnector\ask(), models(), is_ready()
+assets/images/icon.svg           Card and directory icon (original, GPL)
 uninstall.php                    Deletes the option and the credential
 ```
 

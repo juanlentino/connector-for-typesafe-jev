@@ -265,4 +265,4 @@ composer check  # lint + tests
 
 ## License
 
-GPL-2.0-or-later. TypeSafe and Jev are trademarks of their owner; this plugin is an independent client and is not affiliated with, endorsed by, or sponsored by TypeSafe. It ships no TypeSafe logo: every image in a directory plugin must be GPL-compatible, and the Connectors card shows core's generic placeholder instead.
+GPL-2.0-or-later. TypeSafe and Jev are trademarks of their owner; this plugin is an independent client and is not affiliated with, endorsed by, or sponsored by TypeSafe. It ships no TypeSafe logo: every image in a directory plugin must be GPL-compatible, so the Connectors card and the directory listing use the plugin's own icon (three confidence bars, `assets/images/icon.svg`, GPL).
