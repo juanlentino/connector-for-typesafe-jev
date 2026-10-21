@@ -4,7 +4,7 @@ Tags: ai, classification, api, connector, automation
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.3
+Stable tag: 0.4.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,9 @@ Filters: `jevc_default_model`, `jevc_http_timeout`, `jevc_request_payload`, `jev
 
 == Changelog ==
 
+= 0.4.4 =
+* Hardening: the REST route validates its input instead of cleaning it. A malformed model id or a question without text instructions is refused with a clear error.
+
 = 0.4.3 =
 * The Connectors card shows the plugin's own icon instead of the generic placeholder.
 
@@ -191,6 +194,9 @@ Filters: `jevc_default_model`, `jevc_http_timeout`, `jevc_request_payload`, `jev
 * First release: Connectors API registration, client, question builders, response reader, response cache, and REST proxy.
 
 == Upgrade Notice ==
+
+= 0.4.4 =
+Stricter input validation on the REST route. Valid requests behave exactly as before.
 
 = 0.4.3 =
 The Connectors card gets the plugin's own icon. Nothing else changes.

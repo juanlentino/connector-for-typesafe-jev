@@ -10,9 +10,9 @@ Capability: `edit_posts` by default, filterable with `jevc_rest_capability`.
 
 | Param | Type | Required | Notes |
 | --- | --- | --- | --- |
-| `state` | any | yes | String, object or array to evaluate |
+| `state` | string, object or array | yes | The content to evaluate |
 | `questions` | object | yes | Map of id → question; same shape as the PHP builders produce |
-| `model` | string | no | Overrides the default model for this call |
+| `model` | string | no | Overrides the default model for this call. Must match `^[A-Za-z0-9._-]{1,64}$` (`jev-latest`, `jev-1.14.0`); anything else is a `400 rest_invalid_param` |
 
 ```js
 await wp.apiFetch( {

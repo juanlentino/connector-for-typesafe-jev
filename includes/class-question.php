@@ -115,6 +115,12 @@ final class Question {
 				);
 			}
 
+			if ( ! is_string( $question['instructions'] ) || '' === $question['instructions'] ) {
+				throw new Exception(
+					sprintf( 'Question "%s" needs instructions as a non-empty string.', esc_html( $id ) )
+				);
+			}
+
 			if ( ! in_array( $question['type'], array( 'noul', 'choice', 'score' ), true ) ) {
 				throw new Exception(
 					sprintf( 'Question "%s" has an unknown type "%s".', esc_html( $id ), esc_html( (string) $question['type'] ) )

@@ -20,6 +20,12 @@ final class REST_Controller {
 	public const DEFAULT_CAPABILITY = 'edit_posts';
 
 	/**
+	 * What a model id may look like: `jev-latest`, `jev-1.14.0`. Validated, not
+	 * sanitized, so a malformed id is refused rather than silently changed.
+	 */
+	public const MODEL_PATTERN = '^[A-Za-z0-9._-]{1,64}$';
+
+	/**
 	 * Register the routes.
 	 *
 	 * @return void
@@ -36,6 +42,7 @@ final class REST_Controller {
 					'args'                => array(
 						'state'     => array(
 							'required'    => true,
+							'type'        => array( 'string', 'object', 'array' ),
 							'description' => __( 'The content to evaluate.', 'connector-for-typesafe-jev' ),
 						),
 						'questions' => array(
@@ -44,8 +51,8 @@ final class REST_Controller {
 							'description' => __( 'Map of question id to question definition.', 'connector-for-typesafe-jev' ),
 						),
 						'model'     => array(
-							'type'              => 'string',
-							'sanitize_callback' => 'sanitize_text_field',
+							'type'    => 'string',
+							'pattern' => self::MODEL_PATTERN,
 						),
 					),
 				),
