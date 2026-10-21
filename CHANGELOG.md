@@ -6,6 +6,41 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-21
+
+TypeSafe shipped Jev 1.14 (`jev-preview`) and `GET /v1/models` on
+2026-10-14. The plugin already follows new releases through the `jev-latest`
+alias; this adds the model list, built the way the core Anthropic, Google and
+OpenAI connectors build theirs: live from the API, cached for a day, never
+hardcoded, and never used to reject a model id.
+
+### Added
+
+- `JevConnector\models( bool $refresh = false )` and the `Models` class:
+  `GET /v1/models`, parsed to `name`, `description`, `release_date`, cached
+  in a transient for a day per API key. Failures are not cached.
+- `GET /wp-json/jev/v1/models` (same capability as `/ask`; `refresh` skips
+  the cache).
+- README "Models" section on the `jev-latest` default, pinning a versioned
+  id, and `jev-preview`. The pinning example now uses a real id
+  (`jev-1.13.0`, not `jev-1.13`).
+
+### Changed
+
+- `Client::headers()`, `Client::not_configured()` and
+  `Client::error_for_status()` are public static so the model list shares the
+  auth header, User-Agent and error mapping with `ask()`.
+- `readme.txt` External services covers the new request.
+
+### Not added
+
+- Images and `box` questions. TypeSafe marks them experimental behind a
+  `TypeSafe-Danger-Zone-Images` header, and only `jev-preview` answers box
+  questions. `Question::validate_map()` still accepts only `noul`, `choice`
+  and `score`, so a box question is refused before it is sent. Support comes
+  when TypeSafe calls them stable, as a release of its own.
+
+
 ## [0.3.1] - 2026-10-05
 
 Documentation and packaging only. No behaviour change. The release exists

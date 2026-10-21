@@ -37,6 +37,20 @@ function ask( $state, array $questions, array $args = array() ) {
 }
 
 /**
+ * The models and aliases the account can send in the `model` argument.
+ *
+ * Cached for a day per API key. Pinning a versioned id from this list with
+ * the `jevc_default_model` filter keeps answers stable across Jev releases;
+ * the default `jev-latest` follows them.
+ *
+ * @param bool $refresh Skip the cache and ask the API.
+ * @return list<array{name:string,description:string,release_date:string}>|\WP_Error
+ */
+function models( bool $refresh = false ) {
+	return ( new Models() )->all( $refresh );
+}
+
+/**
  * Whether the connector is ready to make requests.
  *
  * @return bool

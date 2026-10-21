@@ -11,12 +11,13 @@ connector-for-typesafe-jev.php   Header, constants, requires, plugins_loaded boo
 includes/
   class-connector.php            Core Connectors API registration; key resolution
   class-client.php               HTTP: payload, cache check, retries, error mapping
+  class-models.php               GET /v1/models, cached a day per key
   class-question.php             noul / choice / score builders and validation
   class-response.php             Typed reader over the decoded body
   class-cache.php                Transient cache keyed by payload hash
-  class-rest-controller.php      /jev/v1/ask and /jev/v1/status
+  class-rest-controller.php      /jev/v1/ask, /models and /status
   class-exception.php            Thrown only for programmer error
-  functions.php                  JevConnector\ask(), JevConnector\is_ready()
+  functions.php                  JevConnector\ask(), models(), is_ready()
 assets/images/typesafe.png       Card logo
 uninstall.php                    Deletes the option and the credential
 ```

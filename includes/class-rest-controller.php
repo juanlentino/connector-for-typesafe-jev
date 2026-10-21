@@ -12,7 +12,7 @@ namespace JevConnector;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers /wp-json/jev/v1/ask and /wp-json/jev/v1/status.
+ * Registers /wp-json/jev/v1/ask, /status and /models.
  */
 final class REST_Controller {
 
@@ -46,6 +46,24 @@ final class REST_Controller {
 						'model'     => array(
 							'type'              => 'string',
 							'sanitize_callback' => 'sanitize_text_field',
+						),
+					),
+				),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE_V1,
+			'/models',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'models' ),
+					'permission_callback' => array( $this, 'can_ask' ),
+					'args'                => array(
+						'refresh' => array(
+							'type'    => 'boolean',
+							'default' => false,
 						),
 					),
 				),
@@ -108,17 +126,43 @@ final class REST_Controller {
 		$result = ask( $request->get_param( 'state' ), $questions, $args );
 
 		if ( is_wp_error( $result ) ) {
-			$data   = $result->get_error_data();
-			$status = is_array( $data ) && isset( $data['status'] ) ? (int) $data['status'] : 400;
-
-			if ( 'jevc_not_configured' === $result->get_error_code() ) {
-				$status = 503;
-			}
-
-			return new \WP_Error( $result->get_error_code(), $result->get_error_message(), array( 'status' => $status ) );
+			return self::rest_error( $result );
 		}
 
 		return rest_ensure_response( $result->to_array() );
+	}
+
+	/**
+	 * Handle GET /models.
+	 *
+	 * @param \WP_REST_Request $request The request.
+	 * @return \WP_REST_Response|\WP_Error
+	 */
+	public function models( \WP_REST_Request $request ) {
+		$result = models( (bool) $request->get_param( 'refresh' ) );
+
+		if ( is_wp_error( $result ) ) {
+			return self::rest_error( $result );
+		}
+
+		return rest_ensure_response( array( 'models' => $result ) );
+	}
+
+	/**
+	 * Give a client error a REST status: the upstream one, 503 when not connected, else 400.
+	 *
+	 * @param \WP_Error $error The error.
+	 * @return \WP_Error
+	 */
+	private static function rest_error( \WP_Error $error ): \WP_Error {
+		$data   = $error->get_error_data();
+		$status = is_array( $data ) && isset( $data['status'] ) ? (int) $data['status'] : 400;
+
+		if ( 'jevc_not_configured' === $error->get_error_code() ) {
+			$status = 503;
+		}
+
+		return new \WP_Error( $error->get_error_code(), $error->get_error_message(), array( 'status' => $status ) );
 	}
 
 	/**

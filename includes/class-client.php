@@ -60,10 +60,7 @@ final class Client {
 	 */
 	public function ask( $state, array $questions, array $args = array() ) {
 		if ( ! $this->is_configured() ) {
-			return new \WP_Error(
-				'jevc_not_configured',
-				__( 'TypeSafe is not connected. Add an API key under Settings then Connectors.', 'connector-for-typesafe-jev' )
-			);
+			return self::not_configured();
 		}
 
 		try {
@@ -143,12 +140,7 @@ final class Client {
 		$url = self::API_BASE . self::ENDPOINT;
 
 		$request_args = array(
-			'headers'     => array(
-				'Authorization' => 'Bearer ' . $this->api_key,
-				'Content-Type'  => 'application/json',
-				'Accept'        => 'application/json',
-				'User-Agent'    => 'Connector-for-TypeSafe-Jev/' . VERSION . '; ' . home_url( '/' ),
-			),
+			'headers'     => self::headers( $this->api_key ) + array( 'Content-Type' => 'application/json' ),
 			'body'        => $body,
 			'timeout'     => (int) $args['timeout'],
 			'redirection' => 0,
@@ -209,7 +201,7 @@ final class Client {
 				return $result;
 			}
 
-			$last_error = $this->error_for_status( $status, $raw );
+			$last_error = self::error_for_status( $status, $raw );
 
 			if ( in_array( $status, self::RETRY_STATUSES, true ) && $attempt < $attempts ) {
 				$this->wait( $attempt, $this->retry_after( $response ) );
@@ -235,13 +227,39 @@ final class Client {
 	}
 
 	/**
+	 * Headers every TypeSafe request carries.
+	 *
+	 * @param string $api_key API key.
+	 * @return array<string,string>
+	 */
+	public static function headers( string $api_key ): array {
+		return array(
+			'Authorization' => 'Bearer ' . $api_key,
+			'Accept'        => 'application/json',
+			'User-Agent'    => 'Connector-for-TypeSafe-Jev/' . VERSION . '; ' . home_url( '/' ),
+		);
+	}
+
+	/**
+	 * The error returned when no key is stored.
+	 *
+	 * @return \WP_Error
+	 */
+	public static function not_configured(): \WP_Error {
+		return new \WP_Error(
+			'jevc_not_configured',
+			__( 'TypeSafe is not connected. Add an API key under Settings then Connectors.', 'connector-for-typesafe-jev' )
+		);
+	}
+
+	/**
 	 * Map a status code to a WP_Error with a readable message.
 	 *
 	 * @param int    $status HTTP status code.
 	 * @param string $raw    Raw response body.
 	 * @return \WP_Error
 	 */
-	private function error_for_status( int $status, string $raw ): \WP_Error {
+	public static function error_for_status( int $status, string $raw ): \WP_Error {
 		$messages = array(
 			400 => __( 'TypeSafe rejected the request as malformed.', 'connector-for-typesafe-jev' ),
 			401 => __( 'The TypeSafe API key is missing or invalid.', 'connector-for-typesafe-jev' ),
