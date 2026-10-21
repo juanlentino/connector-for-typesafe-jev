@@ -6,6 +6,11 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Documentation
+
+- `screenshot-1` and the README's Connectors card image retaken on 0.4.3:
+  the card shows the plugin's own icon, no TypeSafe mark.
+
 ## [0.4.3] - 2026-10-21
 
 ### Added
@@ -16,7 +21,6 @@ All notable changes to this project are documented here. The format follows
   0.4.2) and the directory icon (`.wordpress-org/icon.svg`, 256 and 128 PNG).
   No TypeSafe mark anywhere.
 - `readme.txt` Upgrade Notice for 0.4.3.
-
 
 ### Documentation
 
