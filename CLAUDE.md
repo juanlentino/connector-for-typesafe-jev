@@ -85,7 +85,10 @@ would mean two paths to keep in sync forever.
   anyone copies, so it counts as public surface: change the API and that test
   fails, and the README must change in the same commit. Note the trap it
   avoids — `is_confident()` on a `noul` measures distance from 0.5, so it is
-  true for a confident *not* spam; the gate there is the probability itself.
+  true for a confidently *not* hostile comment; the gate there is the
+  probability itself. The example is deliberately not a spam check: that is
+  Akismet's job, and leading with it pitted Jev against Akismet where Akismet
+  is better (network-wide signals).
 - Everything returns `WP_Error` rather than throwing. `Exception` is only for
   programmer error in building a request.
 

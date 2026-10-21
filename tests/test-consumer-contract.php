@@ -145,26 +145,26 @@ final class ConsumerContractTest extends TestCase {
 			array(
 				'model'   => 'jev-latest',
 				'answers' => array(
-					'spam' => array( 'noul' => 0.97 ),
+					'hostile' => array( 'noul' => 0.97 ),
 				),
 			)
 		);
 
 		$answer = call_user_func(
 			self::ASK,
-			array( 'comment' => 'Cheap watches, best prices, click here.' ),
-			array( 'spam' => \JevConnector\Question::noul( 'Is this comment spam?' ) )
+			array( 'comment' => 'Only an idiot would write this.' ),
+			array( 'hostile' => \JevConnector\Question::noul( 'Does this comment attack a person rather than an idea?' ) )
 		);
 
 		$this->assertFalse( is_wp_error( $answer ) );
-		$this->assertSame( 0.97, $answer->noul( 'spam' ) );
-		$this->assertTrue( $answer->noul( 'spam' ) >= 0.9 );
+		$this->assertSame( 0.97, $answer->noul( 'hostile' ) );
+		$this->assertTrue( $answer->noul( 'hostile' ) >= 0.9 );
 
 		// The state and the question reach the wire in the shape shown.
 		$sent = json_decode( JevTestState::$requests[0]['args']['body'], true );
-		$this->assertSame( array( 'comment' => 'Cheap watches, best prices, click here.' ), $sent['state'] );
-		$this->assertSame( 'noul', $sent['questions']['spam']['type'] );
-		$this->assertSame( 'Is this comment spam?', $sent['questions']['spam']['instructions'] );
+		$this->assertSame( array( 'comment' => 'Only an idiot would write this.' ), $sent['state'] );
+		$this->assertSame( 'noul', $sent['questions']['hostile']['type'] );
+		$this->assertSame( 'Does this comment attack a person rather than an idea?', $sent['questions']['hostile']['instructions'] );
 	}
 
 	/**

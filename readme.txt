@@ -4,7 +4,7 @@ Tags: ai, classification, api, connector, automation
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.4
+Stable tag: 0.4.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,11 +27,11 @@ use JevConnector\Question;
 
 $answer = JevConnector\ask(
     array( 'comment' => $comment->comment_content ),
-    array( 'spam' => Question::noul( 'Is this comment spam?' ) )
+    array( 'hostile' => Question::noul( 'Does this comment attack a person rather than an idea?' ) )
 );
 
-if ( ! is_wp_error( $answer ) && $answer->noul( 'spam' ) >= 0.9 ) {
-    wp_spam_comment( $comment );
+if ( ! is_wp_error( $answer ) && $answer->noul( 'hostile' ) >= 0.9 ) {
+    wp_set_comment_status( $comment, 'hold' );
 }
 `
 
@@ -53,19 +53,36 @@ This plugin adds no menu and no screens of its own. Like the provider connectors
 
 TypeSafe and Jev are trademarks of their owner. This plugin is an independent client and is not affiliated with, endorsed by, or sponsored by TypeSafe, and it ships no TypeSafe logo.
 
+= Common uses =
+
+Spam is not one of them: leave that to Akismet, which sees signals from millions of sites. Jev answers questions about meaning that a spam filter does not ask.
+
+* **Comment moderation**: "Does this comment attack a person rather than an idea?" Hold it for a human.
+* **Contact form routing**: "Which team should answer this: billing, technical, sales, other?" Send it to that inbox.
+* **Tags and categories**: "Is this post about this term?", one question per existing term in a single call. Suggest the terms; an editor accepts.
+* **Pre-publish checks**: "How well is the central claim supported?" on a scale you define. Show it in the publish checklist.
+* **Policy and compliance**: "Does this post make a health claim?" Require review before publishing.
+* **Checking AI-written drafts**: "Does the summary state anything the source does not?" Flag it before it goes out.
+* **Product listings**: "Is this a prohibited item under our policy?" and "Which category fits?" Queue it for review.
+* **Reviews and feedback**: "What is the tone?" and "Does this report a defect?" Route defects to support.
+* **Related posts and search**: "How relevant is this post to the one being read?", per candidate. Reorder the list.
+* **Lead qualification**: "How well does this enquiry fit the customer we serve?" Answer the best fits first.
+
+Anything that publishes, deletes or emails should wait for a high confidence or a human.
+
 = Example =
 
 `
 $answer = JevConnector\ask(
     array( 'comment' => $comment_text ),
     array(
-        'spam'  => JevConnector\Question::noul( 'Is this comment spam?' ),
-        'route' => JevConnector\Question::choice(
+        'off_topic' => JevConnector\Question::noul( 'Is this comment unrelated to the post?' ),
+        'route'     => JevConnector\Question::choice(
             'Where should this go?',
             array(
                 'approve' => 'Clearly a real, on-topic comment',
                 'hold'    => 'Plausible but needs a human look',
-                'trash'   => 'Spam, abuse, or link farming',
+                'trash'   => 'Abuse or harassment',
             )
         ),
     )
@@ -145,6 +162,10 @@ Filters: `jevc_default_model`, `jevc_http_timeout`, `jevc_request_payload`, `jev
 
 == Changelog ==
 
+= 0.4.5 =
+* The opening example holds a hostile comment for review instead of checking for spam, which is Akismet's job.
+* New "Common uses" section: ten everyday ways to use typed answers on a WordPress site.
+
 = 0.4.4 =
 * Hardening: the REST route validates its input instead of cleaning it. A malformed model id or a question without text instructions is refused with a clear error.
 
@@ -194,6 +215,9 @@ Filters: `jevc_default_model`, `jevc_http_timeout`, `jevc_request_payload`, `jev
 * First release: Connectors API registration, client, question builders, response reader, response cache, and REST proxy.
 
 == Upgrade Notice ==
+
+= 0.4.5 =
+Documentation only: a new opening example and a list of common uses. No code change.
 
 = 0.4.4 =
 Stricter input validation on the REST route. Valid requests behave exactly as before.
