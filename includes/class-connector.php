@@ -79,6 +79,7 @@ final class Connector {
 			 * @param string $type Connector type.
 			 */
 			'type'           => (string) apply_filters( 'jevc_connector_type', self::TYPE ),
+			'logo_url'       => plugins_url( 'assets/images/icon.svg', PLUGIN_FILE ),
 			'authentication' => array(
 				'method'          => 'api_key',
 				'credentials_url' => 'https://console.typesafe.ai/keys',

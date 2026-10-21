@@ -6,6 +6,18 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.3] - 2026-10-21
+
+### Added
+
+- The plugin's own icon, `assets/images/icon.svg`: three confidence bars on
+  the dark tile of the social preview, original artwork under the plugin's
+  GPL. It is the Connectors card's `logo_url` again (core's placeholder since
+  0.4.2) and the directory icon (`.wordpress-org/icon.svg`, 256 and 128 PNG).
+  No TypeSafe mark anywhere.
+- `readme.txt` Upgrade Notice for 0.4.3.
+
+
 ### Documentation
 
 - `docs/RELEASING.md`: dropped the stale note about the logo on the
