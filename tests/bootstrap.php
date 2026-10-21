@@ -422,4 +422,5 @@ require_once dirname( __DIR__ ) . '/includes/class-cache.php';
 require_once dirname( __DIR__ ) . '/includes/class-connector.php';
 require_once dirname( __DIR__ ) . '/includes/class-client.php';
 require_once dirname( __DIR__ ) . '/includes/class-models.php';
+require_once dirname( __DIR__ ) . '/includes/class-rest-controller.php';
 require_once dirname( __DIR__ ) . '/includes/functions.php';

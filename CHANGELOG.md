@@ -6,6 +6,33 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.4] - 2026-10-21
+
+Checked against the WordPress security handbook (validating, sanitizing,
+escaping, nonces). It prefers validating and rejecting over sanitizing; three
+inputs were cleaned or trusted instead.
+
+### Changed
+
+- REST `model` is validated against `^[A-Za-z0-9._-]{1,64}$`
+  (`REST_Controller::MODEL_PATTERN`) instead of passed through
+  `sanitize_text_field()`, so a malformed id is refused, not silently altered.
+- REST `state` declares its type (string, object or array).
+- `Question::validate_map()` requires `instructions` to be a non-empty string.
+  REST callers could send an array or a number, which went to TypeSafe and
+  came back as a 422.
+
+### Unchanged, checked
+
+- No output is echoed anywhere; errors leave as `WP_Error`, and exception
+  messages escape caller-supplied ids with `esc_html()`.
+- Every route has a capability check (`jevc_rest_capability`); cookie-auth
+  REST calls carry core's `wp_rest` nonce, which `apiFetch` adds.
+- The API key never appears in a REST response; requests use
+  `redirection => 0` so the bearer header cannot follow a redirect.
+- No SQL, no `$_GET`/`$_POST` reads, no `unserialize()`, every file guards
+  `ABSPATH`, uninstall guards `WP_UNINSTALL_PLUGIN`.
+
 ### Documentation
 
 - `readme.txt` FAQ points contributors to the GitHub repo; CONTRIBUTING has a
