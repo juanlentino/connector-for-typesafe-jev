@@ -185,6 +185,10 @@ $answer->is_confident( 'audience', 0.9 ); // false — do not act automatically
 $answer->usage();                         // [ 'input_tokens' => 412, ... ]
 ```
 
+### Per-call arguments
+
+`ask()` takes a third argument that changes how a single call behaves: `'model'`, `'timeout'`, `'max_attempts'`, `'cache' => false` to bypass the cache once, and `'long_context' => true` to send the `TypeSafe-Danger-Zone-Long-Context` header, which raises the per-request and per-question context from 64k/32k to 262k tokens for that call only. Long-context answers differ from plain ones, so they get their own cache entry.
+
 ### Confidence gating
 
 Gate on consequences, not on a single global threshold. Reads and suggestions can run at 0.5; anything that deletes, publishes, or emails should want 0.9 or a human.

@@ -6,6 +6,10 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- `'long_context' => true` per-call argument for `JevConnector\ask()` / `Client::ask()`, sending the `TypeSafe-Danger-Zone-Long-Context` header (64k/32k to 262k tokens) for that call only. The flag is part of the cache key, so a long-context answer is never served as a plain one.
+
 ## [0.4.5] - 2026-10-21
 
 Documentation only. No code change. Ships because `readme.txt` and the
