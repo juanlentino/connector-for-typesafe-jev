@@ -261,4 +261,61 @@ final class ClientTest extends TestCase {
 		$this->assertSame( 'jevc_invalid_question', $result->get_error_code() );
 		$this->assertCount( 0, JevTestState::$requests );
 	}
+
+	/**
+	 * The long-context header is sent only when the arg asks for it.
+	 *
+	 * @return void
+	 */
+	public function test_long_context_header_respects_the_arg(): void {
+		JevTestState::$responses[] = JevTestState::http( 200, $this->ok_body() );
+		JevTestState::$responses[] = JevTestState::http( 200, $this->ok_body() );
+
+		$question = array( 'urgency' => Question::noul( 'Urgent?' ) );
+
+		( new Client() )->ask( 'same state', $question );
+		( new Client() )->ask( 'same state', $question, array( 'long_context' => true ) );
+
+		$plain = JevTestState::$requests[0]['args']['headers'];
+		$long  = JevTestState::$requests[1]['args']['headers'];
+
+		$this->assertArrayNotHasKey( 'TypeSafe-Danger-Zone-Long-Context', $plain );
+		$this->assertSame( 'true', $long['TypeSafe-Danger-Zone-Long-Context'] );
+	}
+
+	/**
+	 * A long-context call does not reuse the plain call's cache entry.
+	 *
+	 * @return void
+	 */
+	public function test_long_context_misses_the_plain_cache(): void {
+		JevTestState::$responses[] = JevTestState::http( 200, $this->ok_body() );
+		JevTestState::$responses[] = JevTestState::http( 200, $this->ok_body() );
+
+		$question = array( 'urgency' => Question::noul( 'Urgent?' ) );
+
+		( new Client() )->ask( 'same state', $question );
+		( new Client() )->ask( 'same state', $question, array( 'long_context' => true ) );
+
+		$this->assertCount( 2, JevTestState::$requests );
+	}
+
+	/**
+	 * Identical long-context calls share their own cache entry.
+	 *
+	 * @return void
+	 */
+	public function test_long_context_is_cached_on_its_own(): void {
+		JevTestState::$responses[] = JevTestState::http( 200, $this->ok_body() );
+
+		$question = array( 'urgency' => Question::noul( 'Urgent?' ) );
+
+		$first  = ( new Client() )->ask( 'same state', $question, array( 'long_context' => true ) );
+		$second = ( new Client() )->ask( 'same state', $question, array( 'long_context' => true ) );
+
+		$this->assertInstanceOf( Response::class, $first );
+		$this->assertInstanceOf( Response::class, $second );
+		$this->assertSame( 0.97, $second->noul( 'urgency' ) );
+		$this->assertCount( 1, JevTestState::$requests );
+	}
 }

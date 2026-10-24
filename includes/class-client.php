@@ -55,7 +55,8 @@ final class Client {
 	 *
 	 * @param mixed               $state     String, array, or object to evaluate.
 	 * @param array<string,mixed> $questions Map of question id => question array.
-	 * @param array<string,mixed> $args      Optional. 'model', 'timeout', 'max_attempts'.
+	 * @param array<string,mixed> $args      Optional. 'model', 'timeout', 'max_attempts',
+	 *                                       'cache', and 'long_context'.
 	 * @return Response|\WP_Error
 	 */
 	public function ask( $state, array $questions, array $args = array() ) {
@@ -87,6 +88,8 @@ final class Client {
 
 		$args = array_merge( $defaults, $args );
 
+		$long_context = ! empty( $args['long_context'] );
+
 		$payload = array(
 			'state'     => $state,
 			'model'     => (string) $args['model'],
@@ -101,10 +104,11 @@ final class Client {
 		 */
 		$payload = (array) apply_filters( 'jevc_request_payload', $payload, $args );
 
-		$use_cache = ! isset( $args['cache'] ) || false !== $args['cache'];
+		$use_cache     = ! isset( $args['cache'] ) || false !== $args['cache'];
+		$cache_variant = $long_context ? 'long-context' : '';
 
 		if ( $use_cache ) {
-			$cached = Cache::get( $payload );
+			$cached = Cache::get( $payload, $cache_variant );
 
 			if ( $cached instanceof Response ) {
 				return $cached;
@@ -123,7 +127,7 @@ final class Client {
 		$result = $this->send( $body, $args );
 
 		if ( $use_cache && $result instanceof Response ) {
-			Cache::set( $payload, $result );
+			Cache::set( $payload, $result, $cache_variant );
 		}
 
 		return $result;
@@ -139,8 +143,14 @@ final class Client {
 	private function send( string $body, array $args ) {
 		$url = self::API_BASE . self::ENDPOINT;
 
+		$headers = self::headers( $this->api_key );
+
+		if ( ! empty( $args['long_context'] ) ) {
+			$headers['TypeSafe-Danger-Zone-Long-Context'] = 'true';
+		}
+
 		$request_args = array(
-			'headers'     => self::headers( $this->api_key ) + array( 'Content-Type' => 'application/json' ),
+			'headers'     => $headers + array( 'Content-Type' => 'application/json' ),
 			'body'        => $body,
 			'timeout'     => (int) $args['timeout'],
 			'redirection' => 0,
