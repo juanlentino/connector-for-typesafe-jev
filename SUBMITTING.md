@@ -49,7 +49,7 @@ one last grep before you upload:
 
 1. Sign in at https://wordpress.org/plugins/developers/add/ with your
    WordPress.org account.
-2. Upload `connector-for-typesafe-jev.zip`.
+2. Upload `tribar-connector-for-typesafe-jev.zip`.
 3. Wait. Review takes 1 to 10 days, and they aim for 5 business days. It cannot
    be expedited, so do not ask. You get one email thread with a reviewer; reply
    in that thread rather than resubmitting.
@@ -57,19 +57,27 @@ one last grep before you upload:
 **The slug is set by the `Plugin Name:` header and cannot be changed after
 approval.** Before review begins you may get one chance to change it in the UI;
 once it is under review, only plugins@wordpress.org can change it. So check the
-header reads exactly `Connector for TypeSafe Jev` before you upload.
+header reads exactly `Tribar Connector for TypeSafe Jev` before you upload.
 
 ## About the name
 
-The plugin is named **Connector for TypeSafe Jev**, not "TypeSafe Jev
+The plugin is named **Tribar Connector for TypeSafe Jev**, not "TypeSafe Jev
 Connector", on purpose. Guideline 17 prohibits a third-party trademark as the
 *first* term of a plugin slug unless you can prove you own or represent the
-mark. "Feature for Brand" is the form reviewers accept. The resulting slug will
-be `connector-for-typesafe-jev`.
+mark. "Feature for Brand" is the form reviewers accept. The slug is
+`tribar-connector-for-typesafe-jev`.
 
-The GitHub repo carries the same name as the slug, `connector-for-typesafe-jev`
-(it was `jev-connector` until 0.4.1, and GitHub redirects the old URLs). The
-directory slug itself comes from the `Plugin Name:` header at submission time.
+"Tribar" is there because the first submission, "Connector for TypeSafe Jev",
+was pended on 2026-10-26 as too generic: a descriptive word plus someone
+else's product name, with nothing distinctive. Reviewers want a coined term or
+personal brand at the front. Tribar is coined (the plugin's icon is three
+confidence bars) and had no matches in the directory. Do not drop it.
+
+The GitHub repo carries the same name as the slug, `tribar-connector-for-typesafe-jev`
+(it was `jev-connector` until 0.4.1 and `connector-for-typesafe-jev` until
+0.4.6; GitHub redirects the old URLs). The directory slug itself comes from
+the `Plugin Name:` header at submission time, or from plugins@wordpress.org
+once a review is open.
 
 The directory listing says, as most unofficial integrations do, that the plugin
 is independent and not affiliated with, endorsed by, or sponsored by TypeSafe
@@ -81,7 +89,7 @@ and saves a takedown later.
 
 ## After approval
 
-You get SVN access at `https://plugins.svn.wordpress.org/connector-for-typesafe-jev/`.
+You get SVN access at `https://plugins.svn.wordpress.org/tribar-connector-for-typesafe-jev/`.
 The per-release SVN procedure, and the versioning rules that go with it, are
 in [docs/RELEASING.md](docs/RELEASING.md).
 

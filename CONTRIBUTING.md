@@ -7,18 +7,18 @@ request that reverses one of them will be closed with a pointer to that file.
 
 ## Where to start
 
-Issues labelled [`good first issue`](https://github.com/juanlentino/connector-for-typesafe-jev/labels/good%20first%20issue)
-are scoped to one file and say what "done" means. [`blocked: upstream`](https://github.com/juanlentino/connector-for-typesafe-jev/labels/blocked%3A%20upstream)
+Issues labelled [`good first issue`](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/labels/good%20first%20issue)
+are scoped to one file and say what "done" means. [`blocked: upstream`](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/labels/blocked%3A%20upstream)
 issues wait on TypeSafe or WordPress core; talking through the shape there is
-welcome. Questions and ideas go to [Discussions](https://github.com/juanlentino/connector-for-typesafe-jev/discussions).
+welcome. Questions and ideas go to [Discussions](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/discussions).
 
 ## Setup
 
 Requires PHP 7.4+ and Composer. No WordPress install is needed for the tests.
 
 ```bash
-git clone https://github.com/juanlentino/connector-for-typesafe-jev.git
-cd connector-for-typesafe-jev
+git clone https://github.com/juanlentino/tribar-connector-for-typesafe-jev.git
+cd tribar-connector-for-typesafe-jev
 composer install
 composer check      # lint + tests
 ```
@@ -31,7 +31,7 @@ composer check      # lint + tests
   fixes.
 
 To exercise the plugin for real, symlink or clone the repo into
-`wp-content/plugins/connector-for-typesafe-jev` on a WordPress 7.0+ site.
+`wp-content/plugins/tribar-connector-for-typesafe-jev` on a WordPress 7.0+ site.
 The folder name matters: core derives text-domain and asset paths from it.
 
 ## What CI runs

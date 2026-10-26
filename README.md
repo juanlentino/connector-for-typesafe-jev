@@ -1,7 +1,7 @@
-# Connector for TypeSafe Jev
+# Tribar Connector for TypeSafe Jev
 
-[![CI](https://github.com/juanlentino/connector-for-typesafe-jev/actions/workflows/ci.yml/badge.svg)](https://github.com/juanlentino/connector-for-typesafe-jev/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/juanlentino/connector-for-typesafe-jev?label=release)](https://github.com/juanlentino/connector-for-typesafe-jev/releases/latest)
+[![CI](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/actions/workflows/ci.yml/badge.svg)](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/juanlentino/tribar-connector-for-typesafe-jev?label=release)](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/releases/latest)
 [![WordPress 7.0+](https://img.shields.io/badge/WordPress-7.0%2B-21759b)](https://wordpress.org/download/)
 [![PHP 7.4+](https://img.shields.io/badge/PHP-7.4%2B-777bb4)](https://www.php.net/supported-versions.php)
 [![License: GPL-2.0-or-later](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
@@ -71,12 +71,12 @@ Anything that publishes, deletes or emails should gate on a high threshold or a 
 
 **From a release zip**
 
-Download the latest zip from [Releases](https://github.com/juanlentino/connector-for-typesafe-jev/releases) and install it through **Plugins → Add New → Upload Plugin**.
+Download the latest zip from [Releases](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/releases) and install it through **Plugins → Add New → Upload Plugin**.
 
 **From source**
 
 ```bash
-git clone https://github.com/juanlentino/connector-for-typesafe-jev.git wp-content/plugins/connector-for-typesafe-jev
+git clone https://github.com/juanlentino/tribar-connector-for-typesafe-jev.git wp-content/plugins/tribar-connector-for-typesafe-jev
 ```
 
 ## Configure

@@ -65,8 +65,8 @@ final class Connector {
 	 */
 	public static function args(): array {
 		$args = array(
-			'name'           => __( 'TypeSafe Jev', 'connector-for-typesafe-jev' ),
-			'description'    => __( 'System One model for classification, scoring, and typed decisions. Returns probabilities and confidence instead of prose.', 'connector-for-typesafe-jev' ),
+			'name'           => __( 'TypeSafe Jev', 'tribar-connector-for-typesafe-jev' ),
+			'description'    => __( 'System One model for classification, scoring, and typed decisions. Returns probabilities and confidence instead of prose.', 'tribar-connector-for-typesafe-jev' ),
 			/**
 			 * Filters the connector type.
 			 *

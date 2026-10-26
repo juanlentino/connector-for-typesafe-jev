@@ -74,7 +74,9 @@ would mean two paths to keep in sync forever.
 ## Conventions
 
 - Prefix everything `jevc_` / namespace `JevConnector`. Text domain
-  `connector-for-typesafe-jev`.
+  `tribar-connector-for-typesafe-jev`.
+- "Tribar" in the name is required, not decoration: the directory pended
+  "Connector for TypeSafe Jev" as too generic (2026-10-26). See SUBMITTING.md.
 - Files stay small and single-purpose. Logic lives in pure static methods
   (`Question::validate_map()`, the `Response` readers) so it can be tested
   without WordPress.

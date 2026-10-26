@@ -413,7 +413,7 @@ function wp_strip_all_tags( string $value ): string {
 define( 'HOUR_IN_SECONDS', 3600 );
 define( 'DAY_IN_SECONDS', 86400 );
 define( 'JevConnector\\VERSION', '0.1.0' );
-define( 'JevConnector\\PLUGIN_FILE', dirname( __DIR__ ) . '/connector-for-typesafe-jev.php' );
+define( 'JevConnector\\PLUGIN_FILE', dirname( __DIR__ ) . '/tribar-connector-for-typesafe-jev.php' );
 
 require_once dirname( __DIR__ ) . '/includes/class-exception.php';
 require_once dirname( __DIR__ ) . '/includes/class-question.php';

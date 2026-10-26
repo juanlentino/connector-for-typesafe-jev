@@ -6,6 +6,20 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.6] - 2026-10-26
+
+### Changed
+
+- Renamed to **Tribar Connector for TypeSafe Jev**, slug and text domain
+  `tribar-connector-for-typesafe-jev`, main file
+  `tribar-connector-for-typesafe-jev.php`. The directory review pended
+  "Connector for TypeSafe Jev" as too generic (a descriptive word plus a
+  third-party name) and asked for a distinctive term at the front. PHP API,
+  `jevc_` hooks, setting names and the `jev/v1` REST namespace are unchanged.
+- `readme.txt` Contributors is `juanml`, the WordPress.org account that owns
+  the submission; `juanlentino` is not a WordPress.org user.
+- GitHub repo renamed to match the slug; GitHub redirects the old URLs.
+
 ### Added
 
 - `'long_context' => true` per-call argument for `JevConnector\ask()` / `Client::ask()`, sending the `TypeSafe-Danger-Zone-Long-Context` header (64k/32k to 262k tokens) for that call only. The flag is part of the cache key, so a long-context answer is never served as a plain one.

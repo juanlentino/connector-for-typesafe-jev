@@ -1,10 +1,10 @@
-=== Connector for TypeSafe Jev ===
-Contributors: juanlentino
+=== Tribar Connector for TypeSafe Jev ===
+Contributors: juanml
 Tags: ai, classification, api, connector, automation
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.5
+Stable tag: 0.4.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -137,7 +137,7 @@ Not yet. Jev is not an LLM: it returns a probability, a choice, or a score with 
 
 = How can I contribute? =
 
-Development happens on GitHub: https://github.com/juanlentino/connector-for-typesafe-jev. Issues marked "good first issue" are a good start, and questions go to Discussions there.
+Development happens on GitHub: https://github.com/juanlentino/tribar-connector-for-typesafe-jev. Issues marked "good first issue" are a good start, and questions go to Discussions there.
 
 = Does anything get sent without my say-so? =
 
@@ -161,6 +161,10 @@ Filters: `jevc_default_model`, `jevc_http_timeout`, `jevc_request_payload`, `jev
 2. One call returning a probability, a named choice and a score, each with its confidence figure.
 
 == Changelog ==
+
+= 0.4.6 =
+* Renamed to Tribar Connector for TypeSafe Jev, with the slug tribar-connector-for-typesafe-jev, at the directory review's request. Function names, hooks, setting names and the REST namespace are unchanged.
+* New: pass `'long_context' => true` to `JevConnector\ask()` to send one request with TypeSafe's long-context header.
 
 = 0.4.5 =
 * The opening example holds a hostile comment for review instead of checking for spam, which is Akismet's job.
@@ -215,6 +219,9 @@ Filters: `jevc_default_model`, `jevc_http_timeout`, `jevc_request_payload`, `jev
 * First release: Connectors API registration, client, question builders, response reader, response cache, and REST proxy.
 
 == Upgrade Notice ==
+
+= 0.4.6 =
+New plugin name and slug. Nothing to change in code that calls the plugin.
 
 = 0.4.5 =
 Documentation only: a new opening example and a list of common uses. No code change.
