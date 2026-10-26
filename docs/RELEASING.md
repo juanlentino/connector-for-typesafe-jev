@@ -33,8 +33,8 @@ needs a fix after a newer minor has shipped: cut it from the tag, fix, tag
 They must move together. The directory serves whatever `Stable tag` points at.
 
 ```
-connector-for-typesafe-jev.php    * Version:           X.Y.Z
-connector-for-typesafe-jev.php    const VERSION     = 'X.Y.Z';
+tribar-connector-for-typesafe-jev.php    * Version:           X.Y.Z
+tribar-connector-for-typesafe-jev.php    const VERSION     = 'X.Y.Z';
 readme.txt                        Stable tag: X.Y.Z
 ```
 
@@ -59,7 +59,7 @@ readme.txt                        Stable tag: X.Y.Z
    git push origin vX.Y.Z
    ```
 
-8. The Release workflow builds `connector-for-typesafe-jev.zip` from
+8. The Release workflow builds `tribar-connector-for-typesafe-jev.zip` from
    `.distignore` and attaches it to a GitHub release with generated notes.
    Download it and check the file list and the three version strings before
    doing anything else with it.
@@ -80,9 +80,9 @@ The slug comes from the `Plugin Name:` header and is permanent.
 **Every release after approval,** from the SVN checkout:
 
 ```bash
-svn co https://plugins.svn.wordpress.org/connector-for-typesafe-jev/ svn-plugin
+svn co https://plugins.svn.wordpress.org/tribar-connector-for-typesafe-jev/ svn-plugin
 cd svn-plugin
-rm -rf trunk/* && unzip -q ../connector-for-typesafe-jev.zip && mv connector-for-typesafe-jev/* trunk/ && rmdir connector-for-typesafe-jev
+rm -rf trunk/* && unzip -q ../tribar-connector-for-typesafe-jev.zip && mv tribar-connector-for-typesafe-jev/* trunk/ && rmdir tribar-connector-for-typesafe-jev
 svn add --force trunk
 svn cp trunk tags/X.Y.Z
 svn ci -m "Release X.Y.Z"

@@ -43,12 +43,12 @@ final class REST_Controller {
 						'state'     => array(
 							'required'    => true,
 							'type'        => array( 'string', 'object', 'array' ),
-							'description' => __( 'The content to evaluate.', 'connector-for-typesafe-jev' ),
+							'description' => __( 'The content to evaluate.', 'tribar-connector-for-typesafe-jev' ),
 						),
 						'questions' => array(
 							'required'    => true,
 							'type'        => 'object',
-							'description' => __( 'Map of question id to question definition.', 'connector-for-typesafe-jev' ),
+							'description' => __( 'Map of question id to question definition.', 'tribar-connector-for-typesafe-jev' ),
 						),
 						'model'     => array(
 							'type'    => 'string',
@@ -118,7 +118,7 @@ final class REST_Controller {
 		if ( ! is_array( $questions ) ) {
 			return new \WP_Error(
 				'jevc_invalid_question',
-				__( 'questions must be an object.', 'connector-for-typesafe-jev' ),
+				__( 'questions must be an object.', 'tribar-connector-for-typesafe-jev' ),
 				array( 'status' => 400 )
 			);
 		}

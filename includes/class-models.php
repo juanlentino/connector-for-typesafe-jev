@@ -89,7 +89,7 @@ final class Models {
 		if ( null === $models ) {
 			return new \WP_Error(
 				'jevc_invalid_response',
-				__( 'TypeSafe returned a response that could not be decoded.', 'connector-for-typesafe-jev' )
+				__( 'TypeSafe returned a response that could not be decoded.', 'tribar-connector-for-typesafe-jev' )
 			);
 		}
 

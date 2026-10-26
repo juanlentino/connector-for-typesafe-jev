@@ -120,7 +120,7 @@ final class Client {
 		if ( false === $body ) {
 			return new \WP_Error(
 				'jevc_encode_failed',
-				__( 'The request could not be encoded as JSON.', 'connector-for-typesafe-jev' )
+				__( 'The request could not be encoded as JSON.', 'tribar-connector-for-typesafe-jev' )
 			);
 		}
 
@@ -193,7 +193,7 @@ final class Client {
 				if ( ! is_array( $decoded ) ) {
 					$last_error = new \WP_Error(
 						'jevc_invalid_response',
-						__( 'TypeSafe returned a response that could not be decoded.', 'connector-for-typesafe-jev' )
+						__( 'TypeSafe returned a response that could not be decoded.', 'tribar-connector-for-typesafe-jev' )
 					);
 					break;
 				}
@@ -223,7 +223,7 @@ final class Client {
 
 		$error = $last_error instanceof \WP_Error
 			? $last_error
-			: new \WP_Error( 'jevc_request_failed', __( 'The TypeSafe request failed.', 'connector-for-typesafe-jev' ) );
+			: new \WP_Error( 'jevc_request_failed', __( 'The TypeSafe request failed.', 'tribar-connector-for-typesafe-jev' ) );
 
 		/**
 		 * Fires when a System One call fails for good.
@@ -258,7 +258,7 @@ final class Client {
 	public static function not_configured(): \WP_Error {
 		return new \WP_Error(
 			'jevc_not_configured',
-			__( 'TypeSafe is not connected. Add an API key under Settings then Connectors.', 'connector-for-typesafe-jev' )
+			__( 'TypeSafe is not connected. Add an API key under Settings then Connectors.', 'tribar-connector-for-typesafe-jev' )
 		);
 	}
 
@@ -271,19 +271,19 @@ final class Client {
 	 */
 	public static function error_for_status( int $status, string $raw ): \WP_Error {
 		$messages = array(
-			400 => __( 'TypeSafe rejected the request as malformed.', 'connector-for-typesafe-jev' ),
-			401 => __( 'The TypeSafe API key is missing or invalid.', 'connector-for-typesafe-jev' ),
-			403 => __( 'This TypeSafe API key is not permitted to make that call.', 'connector-for-typesafe-jev' ),
-			404 => __( 'The TypeSafe endpoint was not found.', 'connector-for-typesafe-jev' ),
-			422 => __( 'TypeSafe could not validate the question or state.', 'connector-for-typesafe-jev' ),
-			429 => __( 'The TypeSafe rate limit was exceeded.', 'connector-for-typesafe-jev' ),
-			529 => __( 'TypeSafe is overloaded. Try again shortly.', 'connector-for-typesafe-jev' ),
+			400 => __( 'TypeSafe rejected the request as malformed.', 'tribar-connector-for-typesafe-jev' ),
+			401 => __( 'The TypeSafe API key is missing or invalid.', 'tribar-connector-for-typesafe-jev' ),
+			403 => __( 'This TypeSafe API key is not permitted to make that call.', 'tribar-connector-for-typesafe-jev' ),
+			404 => __( 'The TypeSafe endpoint was not found.', 'tribar-connector-for-typesafe-jev' ),
+			422 => __( 'TypeSafe could not validate the question or state.', 'tribar-connector-for-typesafe-jev' ),
+			429 => __( 'The TypeSafe rate limit was exceeded.', 'tribar-connector-for-typesafe-jev' ),
+			529 => __( 'TypeSafe is overloaded. Try again shortly.', 'tribar-connector-for-typesafe-jev' ),
 		);
 
 		$message = isset( $messages[ $status ] )
 			? $messages[ $status ]
 			/* translators: %d: HTTP status code. */
-			: sprintf( __( 'TypeSafe returned HTTP %d.', 'connector-for-typesafe-jev' ), $status );
+			: sprintf( __( 'TypeSafe returned HTTP %d.', 'tribar-connector-for-typesafe-jev' ), $status );
 
 		$detail = json_decode( $raw, true );
 

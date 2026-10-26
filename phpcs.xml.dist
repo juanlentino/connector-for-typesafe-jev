@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="Connector for TypeSafe Jev">
+<ruleset name="Tribar Connector for TypeSafe Jev">
 	<description>WordPress coding standards for the plugin source.</description>
 
 	<file>.</file>
@@ -33,7 +33,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="connector-for-typesafe-jev"/>
+				<element value="tribar-connector-for-typesafe-jev"/>
 			</property>
 		</properties>
 	</rule>

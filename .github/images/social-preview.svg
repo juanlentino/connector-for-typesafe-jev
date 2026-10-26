@@ -12,7 +12,7 @@
     <text x="88" y="150" fill="#7d8590" font-family="-apple-system, Helvetica Neue, Arial, sans-serif"
           font-size="18" font-weight="600" letter-spacing="4.3">WORDPRESS PLUGIN</text>
     <text x="88" y="232" fill="#e6edf3" font-family="-apple-system, Helvetica Neue, Arial, sans-serif"
-          font-size="64" font-weight="700" letter-spacing="-1.4">Connector for TypeSafe Jev</text>
+          font-size="54" font-weight="700" letter-spacing="-1.4">Tribar Connector for TypeSafe Jev</text>
     <text x="88" y="292" fill="#adbac7" font-family="-apple-system, Helvetica Neue, Arial, sans-serif"
           font-size="27">Typed, confidence-scored answers your code can branch on.</text>
     <g font-family="SF Mono, Menlo, monospace" font-size="22">
@@ -24,6 +24,6 @@
       <text x="666" y="408" fill="#e6edf3" font-weight="700">score<tspan fill="#7d8590" font-weight="400">  1.3 · 0.79</tspan></text>
     </g>
     <text x="88" y="512" fill="#6e7681" font-family="SF Mono, Menlo, monospace"
-          font-size="20">github.com/juanlentino/connector-for-typesafe-jev</text>
+          font-size="20">github.com/juanlentino/tribar-connector-for-typesafe-jev</text>
   </g>
 </svg>

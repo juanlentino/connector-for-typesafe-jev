@@ -66,11 +66,11 @@ jobs:
       # in a folder named after the slug. Same staging as the Release workflow.
       - name: Stage plugin files
         run: |
-          SLUG=connector-for-typesafe-jev
+          SLUG=tribar-connector-for-typesafe-jev
           mkdir -p build/$SLUG
           rsync -a --exclude-from=.distignore ./ build/$SLUG/
 
       - name: Run Plugin Check
         uses: wordpress/plugin-check-action@v1
         with:
-          build-dir: './build/connector-for-typesafe-jev'
+          build-dir: './build/tribar-connector-for-typesafe-jev'

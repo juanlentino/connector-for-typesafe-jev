@@ -7,7 +7,7 @@ Connectors, and every choice is a filter.
 ## Files
 
 ```
-connector-for-typesafe-jev.php   Header, constants, requires, plugins_loaded bootstrap
+tribar-connector-for-typesafe-jev.php   Header, constants, requires, plugins_loaded bootstrap
 includes/
   class-connector.php            Core Connectors API registration; key resolution
   class-client.php               HTTP: payload, cache check, retries, error mapping
