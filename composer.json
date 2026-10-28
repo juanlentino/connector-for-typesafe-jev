@@ -3,7 +3,7 @@
 	"description": "WordPress connector for the TypeSafe System One API (Jev).",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
-	"homepage": "https://github.com/juanlentino/tribar-connector-for-typesafe-jev",
+	"homepage": "https://wordpress.org/plugins/tribar-connector-for-typesafe-jev/",
 	"support": {
 		"issues": "https://github.com/juanlentino/tribar-connector-for-typesafe-jev/issues",
 		"security": "https://github.com/juanlentino/tribar-connector-for-typesafe-jev/security/advisories/new"
