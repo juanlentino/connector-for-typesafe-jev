@@ -6,6 +6,13 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Approved for the WordPress.org Plugin Directory on 2026-10-28. The Release
+  workflow now deploys each `vX.Y.Z` tag to SVN (trunk, `tags/X.Y.Z`, and the
+  `.wordpress-org/` listing assets), and can deploy the current `Stable tag`
+  from a manual run.
+
 ## [0.4.6] - 2026-10-26
 
 ### Changed

@@ -69,6 +69,10 @@ Anything that publishes, deletes or emails should gate on a high threshold or a 
 
 ## Install
 
+**From the directory**
+
+Search for **Tribar Connector for TypeSafe Jev** under **Plugins → Add New**, or see [its listing](https://wordpress.org/plugins/tribar-connector-for-typesafe-jev/).
+
 **From a release zip**
 
 Download the latest zip from [Releases](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/releases) and install it through **Plugins → Add New → Upload Plugin**.

@@ -5,6 +5,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      deploy_version:
+        description: 'Deploy trunk to WordPress.org SVN as this version (must equal Stable tag). Empty = build the zip only.'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -13,7 +18,7 @@ jobs:
   zip:
     name: Build distributable zip
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
 
@@ -36,3 +41,21 @@ jobs:
         with:
           files: build/tribar-connector-for-typesafe-jev.zip
           generate_release_notes: true
+
+      # Tag pushes deploy that tag; a manual run deploys only when given a
+      # version. The action skips a version already in SVN tags/.
+      - name: Check version matches Stable tag
+        if: startsWith(github.ref, 'refs/tags/') || inputs.deploy_version != ''
+        run: |
+          V="${{ inputs.deploy_version }}"
+          V="${V:-${GITHUB_REF_NAME#v}}"
+          grep -q "^Stable tag: $V$" readme.txt || { echo "Stable tag is not $V"; exit 1; }
+
+      - name: Deploy to WordPress.org
+        if: startsWith(github.ref, 'refs/tags/') || inputs.deploy_version != ''
+        uses: 10up/action-wordpress-plugin-deploy@2.3.0
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: tribar-connector-for-typesafe-jev
+          VERSION: ${{ inputs.deploy_version }}
