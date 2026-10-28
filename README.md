@@ -1,6 +1,7 @@
 # Tribar Connector for TypeSafe Jev
 
 [![CI](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/actions/workflows/ci.yml/badge.svg)](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/actions/workflows/ci.yml)
+[![WordPress.org](https://img.shields.io/wordpress/plugin/v/tribar-connector-for-typesafe-jev?label=wordpress.org)](https://wordpress.org/plugins/tribar-connector-for-typesafe-jev/)
 [![Release](https://img.shields.io/github/v/release/juanlentino/tribar-connector-for-typesafe-jev?label=release)](https://github.com/juanlentino/tribar-connector-for-typesafe-jev/releases/latest)
 [![WordPress 7.0+](https://img.shields.io/badge/WordPress-7.0%2B-21759b)](https://wordpress.org/download/)
 [![PHP 7.4+](https://img.shields.io/badge/PHP-7.4%2B-777bb4)](https://www.php.net/supported-versions.php)
@@ -9,6 +10,8 @@
 A WordPress connector for the [TypeSafe](https://docs.typesafe.ai) System One API. It gives your themes and plugins a typed way to ask questions about content and get back values you can branch on: a probability, a named choice, or a score, each with a confidence figure.
 
 No prose parsing. No prompt wrangling in your template files.
+
+**Install from the WordPress Plugin Directory:** https://wordpress.org/plugins/tribar-connector-for-typesafe-jev/
 
 **Status:** 0.x, pending review for the WordPress plugin directory. The public API may still move before 1.0; changes are recorded in [CHANGELOG.md](CHANGELOG.md).
 
