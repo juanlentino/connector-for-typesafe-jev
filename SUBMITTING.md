@@ -89,10 +89,5 @@ and saves a takedown later.
 
 ## After approval
 
-You get SVN access at `https://plugins.svn.wordpress.org/tribar-connector-for-typesafe-jev/`.
-The per-release SVN procedure, and the versioning rules that go with it, are
-in [docs/RELEASING.md](docs/RELEASING.md).
-
-The `.wordpress-org/` folder currently holds only a README describing the
-icon, banner and screenshot sizes; no images exist yet. They are optional for
-submission and can be added to SVN `assets/` any time after approval.
+Approved 2026-10-28 as `tribar-connector-for-typesafe-jev`. Releases now
+deploy to SVN from the tag push; see [docs/RELEASING.md](docs/RELEASING.md).

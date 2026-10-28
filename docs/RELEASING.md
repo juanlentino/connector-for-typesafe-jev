@@ -72,12 +72,34 @@ should not ship will be flagged before the release, not after.
 
 ## Publishing to the directory
 
-**First submission:** upload the zip at
-https://wordpress.org/plugins/developers/add/. Review takes one to ten days
-and cannot be expedited. Reply in the review email thread; do not resubmit.
-The slug comes from the `Plugin Name:` header and is permanent.
+Approved 2026-10-28. SVN: https://plugins.svn.wordpress.org/tribar-connector-for-typesafe-jev
+(user `juanml`, case sensitive). Listing:
+https://wordpress.org/plugins/tribar-connector-for-typesafe-jev/
 
-**Every release after approval,** from the SVN checkout:
+**Every release deploys itself.** Pushing the `vX.Y.Z` tag (step 7) runs the
+Release workflow, which builds the zip and then commits the same `.distignore`
+file set to SVN `trunk/`, copies it to `tags/X.Y.Z`, and syncs
+`.wordpress-org/` to SVN `assets/`, via
+[10up/action-wordpress-plugin-deploy](https://github.com/10up/action-wordpress-plugin-deploy).
+It refuses to run if `Stable tag` does not match the version, and skips a
+version already in SVN `tags/`. Needs repo secrets `SVN_USERNAME` (`juanml`)
+and `SVN_PASSWORD` (the SVN password from the wordpress.org profile, Account &
+Security, not the login password). The repo is public, so it costs no Actions
+minutes.
+
+**Deploying without a new tag** (e.g. the first deploy of a version tagged
+before the deploy step existed, or after fixing the secrets): run the Release
+workflow by hand on `trunk` with `deploy_version` set to the current
+`Stable tag`. It deploys `trunk` as that version, so only do it when `trunk`
+has no shipping changes since the tag.
+
+Listing images (icon, banner, screenshots) live in `.wordpress-org/`; sizes in
+its README. Do not put the TypeSafe mark on them; the directory treats
+third-party branding on listing assets as an implied endorsement. The plugin
+itself ships no TypeSafe logo either since 0.4.2 (Guideline 1: shipped images
+must be GPL-compatible).
+
+**By hand, if Actions is unavailable:**
 
 ```bash
 svn co https://plugins.svn.wordpress.org/tribar-connector-for-typesafe-jev/ svn-plugin
@@ -85,19 +107,5 @@ cd svn-plugin
 rm -rf trunk/* && unzip -q ../tribar-connector-for-typesafe-jev.zip && mv tribar-connector-for-typesafe-jev/* trunk/ && rmdir tribar-connector-for-typesafe-jev
 svn add --force trunk
 svn cp trunk tags/X.Y.Z
-svn ci -m "Release X.Y.Z"
+svn ci -m "Release X.Y.Z" --username juanml
 ```
-
-Directory images (icon, banner, screenshots) go in the SVN `assets/`
-directory, not the zip. Sizes are in `.wordpress-org/README.md`. Do not put
-the TypeSafe mark on those; the directory treats third-party branding on
-listing assets as an implied endorsement. The plugin itself ships no TypeSafe
-logo either since 0.4.2 (Guideline 1: shipped images must be GPL-compatible).
-
-**Without touching SVN:** once approved, the usual route is
-[10up/action-wordpress-plugin-deploy](https://github.com/10up/action-wordpress-plugin-deploy)
-in `release.yml`, run on the same tag push, with `SVN_USERNAME` and
-`SVN_PASSWORD` as repo secrets. It honours `.distignore` and copies
-`.wordpress-org/` to SVN `assets/`. Add it after approval, not before: there
-is no SVN repo to deploy to until then. The repo is public, so the job costs
-no Actions minutes.
